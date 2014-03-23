@@ -6,6 +6,8 @@
 #include <QProcess>
 #include <QProgressDialog>
 #include <QRegularExpression>
+#include <QDir>
+#include <QDesktopServices>
 
 namespace Ui {
 class YoutubeDL;

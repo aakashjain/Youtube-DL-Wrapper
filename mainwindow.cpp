@@ -7,12 +7,13 @@ YoutubeDL::YoutubeDL(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("YouTube-DL Wrapper");
-    ui->statusBar->setSizeGripEnabled(false);
     ui->thumbLabel->setScaledContents(true);
 }
 
 YoutubeDL::~YoutubeDL()
 {
+    QDir remover;
+    remove("thumb.jpg");
     delete ui;
 }
 
@@ -33,12 +34,15 @@ void YoutubeDL::on_fetchButton_clicked()
     watcher = new QFutureWatcher<void>;
     connect(watcher, SIGNAL(finished()), this, SLOT(writeDesc()));
     *fetcher = QtConcurrent::run(this, &YoutubeDL::runCmd,
-                                  "youtube-dl --skip-download --write-thumbnail -o 1.jpg --get-title --get-description " + ui->urlBox->text());
+                                 "youtube-dl --skip-download --write-thumbnail -o thumb.jpg --get-title --get-description " +
+                                 ui->urlBox->text());
     watcher->setFuture(*fetcher);
 }
 
 void YoutubeDL::writeDesc()
 {
+    delete fetcher;
+    delete watcher;
     if (perr.length())
     {
         ui->descBox->setText("Error occured.\n" + perr);
@@ -52,8 +56,6 @@ void YoutubeDL::writeDesc()
         ui->thumbLabel->setEnabled(true);
         ui->descBox->setEnabled(true);
     }
-    delete fetcher;
-    delete watcher;
     fetcher = new QFuture<void>;
     watcher = new QFutureWatcher<void>;
     connect(watcher, SIGNAL(finished()), this, SLOT(writeFormats()));
@@ -89,16 +91,12 @@ void YoutubeDL::on_downloadButton_clicked()
     ui->fetchButton->setEnabled(false);
     ui->downloadButton->setEnabled(false);
     ui->descBox->setText("Downloading...");
-    QString format = ui->formatBox->currentText(), get;
-//improve format grab
-    int i=0;
-    for (i=0; format[i]!='\t'; i++)
-        get[i]=format[i];
-    get[i]='\0';
+    QString format = ui->formatBox->currentText();
+    format.remove(format.indexOf('\t'), format.length());
     fetcher = new QFuture<void>;
     watcher = new QFutureWatcher<void>;
     connect(watcher, SIGNAL(finished()), this, SLOT(writeDL()));
-    *fetcher = QtConcurrent::run(this, &YoutubeDL::runCmd, "youtube-dl -f " + get + " " + ui->urlBox->text());
+    *fetcher = QtConcurrent::run(this, &YoutubeDL::runCmd, "youtube-dl -f " + format + " " + ui->urlBox->text());
     watcher->setFuture(*fetcher);
     /*ui->progressBar->setEnabled(true);
     while (!p.atEnd())
@@ -120,7 +118,10 @@ void YoutubeDL::writeDL()
     if (perr.length())
         ui->descBox->setText("Error during download.\n" + perr);
     else
+    {
         ui->descBox->setText("Download completed!");
+        QDesktopServices::openUrl(QUrl::fromLocalFile(QDir::currentPath()));
+    }
     ui->fetchButton->setEnabled(true);
     ui->downloadButton->setEnabled(true);
 }

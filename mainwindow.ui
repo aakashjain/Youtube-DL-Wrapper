@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
-    <height>370</height>
+    <width>680</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>720</width>
-    <height>370</height>
+    <width>680</width>
+    <height>320</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>720</width>
-    <height>370</height>
+    <width>680</width>
+    <height>320</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -38,10 +38,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>360</x>
       <y>70</y>
       <width>300</width>
-      <height>203</height>
+      <height>180</height>
      </rect>
     </property>
     <property name="acceptDrops">
@@ -60,8 +60,8 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>20</x>
       <y>70</y>
-      <width>360</width>
-      <height>203</height>
+      <width>320</width>
+      <height>180</height>
      </rect>
     </property>
     <property name="text">
@@ -75,9 +75,9 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>300</y>
-      <width>361</width>
-      <height>23</height>
+      <y>270</y>
+      <width>320</width>
+      <height>31</height>
      </rect>
     </property>
    </widget>
@@ -87,10 +87,10 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>300</y>
+      <x>360</x>
+      <y>270</y>
       <width>81</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -102,7 +102,7 @@ p, li { white-space: pre-wrap; }
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>681</width>
+      <width>641</width>
       <height>32</height>
      </rect>
     </property>
@@ -142,10 +142,10 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>300</y>
+      <x>460</x>
+      <y>270</y>
       <width>201</width>
-      <height>23</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -162,7 +162,6 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
