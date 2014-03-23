@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtConcurrent/QtConcurrent>
 
 namespace Ui {
 class YoutubeDL;
@@ -20,8 +21,19 @@ private slots:
 
     void on_downloadButton_clicked();
 
+    void runCmd(QString command);
+
+    void writeDesc();
+
+    void writeFormats();
+
+    void writeDL();
+
 private:
     Ui::YoutubeDL *ui;
+    QString pout, perr;
+    QFuture<void> *fetcher;
+    QFutureWatcher<void> *watcher;
 };
 
 #endif // YoutubeDL_H
