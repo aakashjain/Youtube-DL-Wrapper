@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QtConcurrent/QtConcurrent>
+#include <QProcess>
+#include <QProgressDialog>
+#include <QRegularExpression>
 
 namespace Ui {
 class YoutubeDL;

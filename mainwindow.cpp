@@ -1,10 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QProcess>
-#include <QProgressDialog>
-#include <QRegularExpression>
-#include <QtConcurrent/QtConcurrent>
-#include <QDebug>
 
 YoutubeDL::YoutubeDL(QWidget *parent) :
     QMainWindow(parent),
